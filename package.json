@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@phensley/cldr": "0.1.13",
+    "@phensley/cldr": "0.2.2",
     "icepick": "^1.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -15,9 +15,10 @@
     "wretch": "^1.1.1"
   },
   "scripts": {
+    "build": "npm run packs && react-scripts-ts build",
+    "deploy": "npm run build && gh-pages -d build",
     "packs": "node scripts/copy-packs.js",
     "start": "npm run packs && react-scripts-ts start",
-    "build": "npm run packs && react-scripts-ts build",
     "test": "npm run packs && react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "@types/redux": "^3.6.0",
     "@types/redux-actions": "^2.2.3",
     "@types/redux-saga": "^0.10.5",
+    "gh-pages": "^1.1.0",
     "react-scripts-ts": "2.13.0",
     "source-map-explorer": "^1.5.0",
     "tslint-no-circular-imports": "^0.2.1",
