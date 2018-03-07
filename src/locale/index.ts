@@ -16,7 +16,7 @@ const loader = (language: string): any => EnglishPack;
  */
 const asyncLoader = (language: string): Promise<any> => {
   return new Promise<any>((resolve, reject) => {
-    wretch(`/packs/${language}.json`)
+    wretch(`${process.env.PUBLIC_URL}/packs/${language}.json`)
       .get()
       .json(resolve)
       .catch(reject);
