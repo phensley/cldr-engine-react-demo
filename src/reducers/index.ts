@@ -1,5 +1,5 @@
 import { combineReducers, Reducer } from 'redux';
-import { locale, LocaleState, localeState } from './locale';
+import { initialLocaleState, locale, LocaleState } from './locale';
 import * as icepick from 'icepick';
 
 export interface State {
@@ -7,7 +7,7 @@ export interface State {
 }
 
 export const state: State = icepick.freeze({
-  locale: localeState
+  locale: initialLocaleState
 });
 
 export const reducer: Reducer<State> = combineReducers<State>({

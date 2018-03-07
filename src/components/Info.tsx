@@ -16,7 +16,6 @@ class InfoImpl extends React.Component<Props> {
     const { engine } = this.props;
     const { tag } = engine.locale;
     const region = tag.region();
-
     return (
       <table className='pure-table pure-table-horizontal'>
         <thead>
