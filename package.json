@@ -17,8 +17,9 @@
   },
   "scripts": {
     "build": "npm run packs && react-scripts-ts build",
-    "deploy": "npm run build && gh-pages -d build",
+    "deploy": "npm run build && npm run report && gh-pages -d build",
     "packs": "node scripts/copy-packs.js",
+    "report": "source-map-explorer --html -m build/static/js/main.*.js >build/report.html",
     "start": "npm run packs && react-scripts-ts start",
     "test": "npm run packs && react-scripts-ts test --env=jsdom"
   },
