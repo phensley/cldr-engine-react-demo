@@ -22,14 +22,16 @@ class AppImpl extends React.Component<any> {
     return (
       <div>
         <Nav />
-        <Switcher />
-        <Info />
-        <Numbers />
-        <Currencies />
-        <Gregorian />
-        <RelativeTime />
-        <Units />
-        <DecimalMath />
+        <div className='wrapper'>
+          <Switcher />
+          <Info />
+          <Numbers />
+          <Currencies />
+          <Gregorian />
+          <RelativeTime />
+          <Units />
+          <DecimalMath />
+        </div>
       </div>
     );
   }
