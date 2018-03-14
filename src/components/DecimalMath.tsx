@@ -15,10 +15,10 @@ const calculate = (as: string, bs: string, scale: number): JSX.Element => {
   const a = new Decimal(as);
   const b = new Decimal(bs);
   const ctx = { scale };
-
+  let i = 0;
   const elems: JSX.Element[] = [];
   const emit = (op: string, d: Decimal) =>
-    elems.push(<span>A{op}B&nbsp;=&nbsp;{d.setScale(scale).toString()}<br/></span>);
+    elems.push(<span key={i++}>A{op}B&nbsp;=&nbsp;{d.setScale(scale).toString()}<br/></span>);
 
   emit('+', a.add(b));
   emit('-', a.subtract(b));
@@ -27,7 +27,7 @@ const calculate = (as: string, bs: string, scale: number): JSX.Element => {
     const r = a.divide(b, ctx);
     emit('/', r);
   } catch (error) {
-    elems.push(<span>{error.toString()}</span>);
+    elems.push(<span key={i++}>{error.toString()}</span>);
   }
   return <code>{elems}</code>;
 };
