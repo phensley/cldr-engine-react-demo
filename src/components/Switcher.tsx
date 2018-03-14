@@ -26,7 +26,11 @@ class SwitcherImpl extends React.Component<any> {
   }
 
   render(): JSX.Element {
-    return <button className='btn btn-a btn-sm smooth' onClick={this.changeLocale}>Random Locale</button>;
+    return (
+      <button className='btn btn-a btn-sm smooth switcher' onClick={this.changeLocale}>
+      Random Locale
+      </button>
+    );
   }
 }
 

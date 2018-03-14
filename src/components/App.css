@@ -26,3 +26,9 @@ table.table tbody.math {
 .btn {
   font-size: 1em;
 }
+
+button.switcher {
+  position: fixed;
+  right: 10px;
+  top: 55px
+}

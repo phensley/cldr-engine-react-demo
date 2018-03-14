@@ -18,13 +18,15 @@ const NUMBERS = [
 ];
 
 const CURRENCIES: CurrencyType[] = [
-  'USD', 'EUR', 'GBP', 'JPY'
+  'USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'RUB'
 ];
 
 const OPTIONS: CurrencyFormatOptions[] = [
+  { group: true },
   { group: true, style: 'name' },
   { group: true , style: 'short' },
   { group: true, style: 'accounting' },
+  { group: true, style: 'code' }
 ];
 
 const formatAmount = (engine: Engine, n: string, opts: CurrencyFormatOptions): JSX.Element => {

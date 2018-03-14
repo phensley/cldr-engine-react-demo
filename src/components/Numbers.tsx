@@ -24,6 +24,7 @@ const OPTIONS: DecimalFormatOptions[] = [
   { group: true, maximumFractionDigits: 1 },
   { group: true, maximumFractionDigits: 0, round: 'floor' },
   { style: 'short', maximumFractionDigits: 1, group: true },
+  { style: 'long', group: true }
 ];
 
 class NumbersImpl extends React.Component<Props> {
