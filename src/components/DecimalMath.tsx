@@ -8,13 +8,14 @@ const NUMBERS: Pair[] = [
   ['-10', '-6'],
   ['7.365', '0'],
   ['-5', '17.311'],
-  ['3.1415926535897932384', '15.7e30']
+  ['15.7e30', '3.1415926535897932384']
 ];
 
 const calculate = (as: string, bs: string, scale: number): JSX.Element => {
   const a = new Decimal(as);
   const b = new Decimal(bs);
-  const ctx = { scale };
+  // precision for math operations
+  const ctx = { precision: 100 };
   let i = 0;
   const elems: JSX.Element[] = [];
   const emit = (op: string, d: Decimal) =>
