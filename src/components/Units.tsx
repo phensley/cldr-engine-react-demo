@@ -16,7 +16,7 @@ const UNITS: UnitType[] = [
 
 const OPTIONS: UnitFormatOptions[] = [
   { group: true },
-  { group: true, minimumFractionDigits: 4 },
+  { group: true, minimumFractionDigits: 1 },
   { length: 'narrow' },
   { maximumSignificantDigits: 3 }
 ];
