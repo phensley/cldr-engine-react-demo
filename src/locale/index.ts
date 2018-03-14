@@ -34,7 +34,7 @@ const options: CLDROptions = {
 export const cldr = new CLDR(options);
 
 // Default cldr engine to be set in the locale store.
-export const English = cldr.get('en-US');
+export const English = cldr.get('en');
 
 const elapsed = +(new Date()) - start;
 console.warn(`cldr static init: ${elapsed} ms`);

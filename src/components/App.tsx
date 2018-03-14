@@ -5,8 +5,14 @@ import { State } from '../reducers';
 
 import './App.css';
 import { Info } from './Info';
-import { Numbers } from './Numbers';
+import { Nav } from './Nav';
 import { Switcher } from './Switcher';
+import { Currencies } from './Currencies';
+import { DecimalMath } from './DecimalMath';
+import { Numbers } from './Numbers';
+import { Gregorian } from './Gregorian';
+import { RelativeTime } from './RelativeTime';
+import { Units } from './Units';
 
 class AppImpl extends React.Component<any> {
 
@@ -14,12 +20,16 @@ class AppImpl extends React.Component<any> {
 
   render(): JSX.Element {
     return (
-      <div className='App'>
-        <p>Work in progress..</p>
-        <p><a href='#' onClick={this.showReport}>Uncompressed bundle report</a></p>
+      <div>
+        <Nav />
+        <Switcher />
         <Info />
         <Numbers />
-        <Switcher />
+        <Currencies />
+        <Gregorian />
+        <RelativeTime />
+        <Units />
+        <DecimalMath />
       </div>
     );
   }

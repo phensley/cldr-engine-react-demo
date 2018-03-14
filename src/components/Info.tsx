@@ -10,39 +10,38 @@ interface Props {
   engine: Engine;
 }
 
+const regionName = (engine: Engine, id: string): string => engine.Names.getTerritoryDisplayName(id);
+
 class InfoImpl extends React.Component<Props> {
 
   render(): JSX.Element {
     const { engine } = this.props;
-    const { tag } = engine.locale;
-    const region = tag.region();
+    const { id, tag } = engine.locale;
+
+    const regionID = tag.region();
+    const localRegion = regionName(engine, regionID);
+    const englishRegion = regionName(English, regionID);
+
     return (
-      <table className='pure-table pure-table-horizontal'>
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>English</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Locale</td>
-            <td>{tag.toString()}</td>
-            <td>{tag.toString()}</td>
-          </tr>
-          <tr>
-            <td>Language ID</td>
-            <td>{tag.language()}</td>
-            <td>{tag.language()}</td>
-          </tr>
-          <tr>
-            <td>Region name</td>
-            <td>{English.Names.getTerritoryDisplayName(region)}</td>
-            <td>{engine.Names.getTerritoryDisplayName(region)}</td>
-          </tr>
-        </tbody>
-      </table>
+      <div>
+        <h1>Locale</h1>
+        <table className='table'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Language Tag</th>
+              <th>Region</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{id}</td>
+              <td>{tag.toString()}</td>
+              <td>{localRegion} {localRegion !== englishRegion ? `(${englishRegion})` : ''}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     );
   }
 

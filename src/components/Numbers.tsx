@@ -2,54 +2,60 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Engine } from '@phensley/cldr';
-import { English } from '../locale';
+import { Engine, DecimalFormatOptions } from '@phensley/cldr';
 import { State } from '../reducers';
+import { renderOptions } from './utils';
 
 interface Props {
   engine: Engine;
 }
 
+const NUMBERS = [
+  '.098765',
+  '1.07',
+  '12345.678',
+  '999999.987',
+  String(Number.MAX_SAFE_INTEGER)
+];
+
+const OPTIONS: DecimalFormatOptions[] = [
+  {},
+  { group: true },
+  { group: true, maximumFractionDigits: 1 },
+  { group: true, maximumFractionDigits: 0, round: 'floor' },
+  { style: 'short', maximumFractionDigits: 1, group: true },
+];
+
 class NumbersImpl extends React.Component<Props> {
 
-  render(): JSX.Element {
-    const { engine } = this.props;
-
-    const n1 = '12345.678';
-    const o1 = { group: true };
-    const o2 = { group: true, maximumFractionDigits: 1 };
-
+  headings(): JSX.Element {
     return (
-      <table className='pure-table pure-table-horizontal'>
-        <thead>
-          <tr>
-            <th>Number</th>
-            <th>Options</th>
-            <th>English</th>
-            <th>Local</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>{n1}</td>
-            <td/>
-            <td>{English.Numbers.formatDecimal(n1, {})}</td>
-            <td>{engine.Numbers.formatDecimal(n1, {})}</td>
-          </tr>
-          <tr>
-            <td>{n1}</td>
-            <td>group: true</td>
-            <td>{English.Numbers.formatDecimal(n1, o1)}</td>
-            <td>{engine.Numbers.formatDecimal(n1, o1)}</td>
-          </tr>
-          <tr>
-            <td>{n1}</td>
-            <td>group: true<br />maximumFractionDigits: 1</td>
-            <td>{English.Numbers.formatDecimal(n1, o2)}</td>
-            <td>{engine.Numbers.formatDecimal(n1, o2)}</td>
-          </tr>
-        </tbody>
-      </table>
+      <tr>
+        {OPTIONS.map((o, i) => <td key={i}>{renderOptions(o)}</td>)}
+      </tr>
+    );
+  }
+
+  numbers(): JSX.Element[] {
+    const { engine } = this.props;
+    return NUMBERS.map((n, i) => {
+      return (
+        <tr key={i}>
+          {OPTIONS.map((o, j) => <td key={j}>{engine.Numbers.formatDecimal(n, o)}</td>)}
+        </tr>
+      );
+    });
+  }
+
+  render(): JSX.Element {
+    return (
+      <div>
+        <h1>Numbers</h1>
+        <table className='table'>
+          <thead className='options'>{this.headings()}</thead>
+          <tbody>{this.numbers()}</tbody>
+        </table>
+      </div>
     );
   }
 }

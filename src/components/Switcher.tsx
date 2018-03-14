@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import { availableLocales } from '@phensley/cldr';
 
 import { changeLocale } from '../actions';
-import { cldr } from '../locale';
 import { State } from '../reducers';
 
-const AVAILABLE_LOCALES = cldr.availableLocales();
+const AVAILABLE_LOCALES = availableLocales();
 
 const randomLocale = () => {
   const len = AVAILABLE_LOCALES.length;
@@ -26,7 +26,7 @@ class SwitcherImpl extends React.Component<any> {
   }
 
   render(): JSX.Element {
-    return <a href='#' onClick={this.changeLocale}>Random locale</a>;
+    return <button className='btn btn-sm smooth' onClick={this.changeLocale}>Random Locale</button>;
   }
 }
 

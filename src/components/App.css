@@ -1,28 +1,24 @@
-.App {
-  text-align: center;
+h1 {
+  font-size: 2em;
+  margin: 0.2em 0;
+  border-bottom: 5px solid;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+table.table tbody > :nth-child(2n-1) {
+  background: #efefef;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+table.table thead.options {
+  font-size: .85em;
+  color: #0074D9;
 }
 
-.App-title {
-  font-size: 1.5em;
+table.table tbody.math {
+  font-size: .8em;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.btn {
+  font-size: 1em;
 }
