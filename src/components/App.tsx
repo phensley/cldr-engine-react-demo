@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { State } from '../reducers';
 
+import { Engine } from '@phensley/cldr';
 import './App.css';
 import { Info } from './Info';
 import { Nav } from './Nav';
@@ -19,12 +20,14 @@ class AppImpl extends React.Component<any> {
   showReport = () => window.location.href = `${process.env.PUBLIC_URL}/report.html`;
 
   render(): JSX.Element {
+    const engine: Engine = this.props.engine;
+    const dir = engine.General.characterOrder();
     return (
       <div>
         <Nav />
-        <div className='wrapper'>
+        <Switcher />
+        <div className='wrapper' dir={dir}>
           <Info />
-          <Switcher />
           <Numbers />
           <Currencies />
           <Gregorian />
@@ -37,7 +40,9 @@ class AppImpl extends React.Component<any> {
   }
 }
 
-const mapState = (s: State) => ({ });
+const mapState = (s: State) => ({
+  engine: s.locale.engine
+});
 const mapDispatch = (d: Dispatch<State>) => ({ });
 
 export const App = connect(mapState, mapDispatch)(AppImpl);
