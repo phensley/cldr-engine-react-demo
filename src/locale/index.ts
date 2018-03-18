@@ -2,6 +2,9 @@ const start = +(new Date());
 
 import wretch from 'wretch';
 import { CLDR, CLDROptions } from '@phensley/cldr';
+import Package from '../../package.json';
+
+const version = Package.dependencies['@phensley/cldr'];
 
 // Import default language directly so it's always available
 import EnglishPack from '@phensley/cldr/packs/en.json';
@@ -16,7 +19,7 @@ const loader = (language: string): any => EnglishPack;
  */
 const asyncLoader = (language: string): Promise<any> => {
   return new Promise<any>((resolve, reject) => {
-    wretch(`${process.env.PUBLIC_URL}/packs/${language}.json`)
+    wretch(`${process.env.PUBLIC_URL}/packs/${language}.json?v=${version}`)
       .get()
       .json(resolve)
       .catch(reject);
