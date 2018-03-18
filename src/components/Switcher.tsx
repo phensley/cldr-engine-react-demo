@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { availableLocales } from '@phensley/cldr';
+import { availableLocales, Locale } from '@phensley/cldr';
 
 import { changeLocale } from '../actions';
 import { State } from '../reducers';
@@ -18,9 +18,9 @@ class SwitcherImpl extends React.Component<any> {
 
   changeLocale = (): void => {
     const { locale } = this.props.engine;
-    let next: string = locale.id;
-    while (next === locale.id) {
-      next = randomLocale().id;
+    let next: Locale = locale;
+    while (next.id === locale.id) {
+      next = randomLocale();
     }
     this.props.actions.changeLocale(next);
   }
