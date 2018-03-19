@@ -29,7 +29,7 @@ const asyncLoader = (language: string): Promise<any> => {
 const options: CLDROptions = {
   loader,
   asyncLoader,
-  packCacheSize: 3,
+  packCacheSize: 8,
   patternCacheSize: 50
 };
 
