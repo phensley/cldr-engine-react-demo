@@ -10,6 +10,7 @@ interface Props {
   engine: Engine;
 }
 
+const scriptName = (engine: Engine, id: string): string => engine.General.getScriptDisplayName(id);
 const regionName = (engine: Engine, id: string): string => engine.General.getTerritoryDisplayName(id);
 
 class InfoImpl extends React.Component<Props> {
@@ -17,6 +18,10 @@ class InfoImpl extends React.Component<Props> {
   render(): JSX.Element {
     const { engine } = this.props;
     const { id, tag } = engine.locale;
+
+    const scriptID = tag.script();
+    const localScript = scriptName(engine, scriptID);
+    const englishScript = scriptName(English, scriptID);
 
     const regionID = tag.region();
     const localRegion = regionName(engine, regionID);
@@ -30,6 +35,7 @@ class InfoImpl extends React.Component<Props> {
             <tr>
               <th>ID</th>
               <th>Language Tag</th>
+              <th>Script</th>
               <th>Region</th>
             </tr>
           </thead>
@@ -37,6 +43,7 @@ class InfoImpl extends React.Component<Props> {
             <tr>
               <td>{id}</td>
               <td>{tag.toString()}</td>
+              <td>{localScript} {localScript !== englishScript ? `(${englishScript})` : ''}</td>
               <td>{localRegion} {localRegion !== englishRegion ? `(${englishRegion})` : ''}</td>
             </tr>
           </tbody>
