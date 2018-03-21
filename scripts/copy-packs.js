@@ -2,6 +2,10 @@ const fs = require('fs');
 const { basename, join } = require('path');
 const zlib = require('zlib');
 
+const resource = require(join(__dirname, '../node_modules/@phensley/cldr/packs/resource.json'));
+
+const PKGHASH = resource.sha256.substring(0, 10);
+
 const mtime = f => fs.statSync(f).mtimeMs;
 const newerThan = (a, b) => mtime(a) > mtime(b);
 
@@ -28,7 +32,7 @@ const main = () => {
 
   names.forEach(path => {
     const name = basename(path, '.json.gz');
-    const outpath = join(dst, `${name}.json`);
+    const outpath = join(dst, `${name}-${PKGHASH}.json`);
     if (fs.existsSync(outpath) && newerThan(outpath, path)) {
       return;
     }
