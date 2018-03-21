@@ -10,7 +10,7 @@ interface Props {
   engine: Engine;
 }
 
-const regionName = (engine: Engine, id: string): string => engine.Names.getTerritoryDisplayName(id);
+const regionName = (engine: Engine, id: string): string => engine.General.getTerritoryDisplayName(id);
 
 class InfoImpl extends React.Component<Props> {
 

@@ -2,9 +2,9 @@
   "name": "cldr-engine-react-demo",
   "version": "0.1.0",
   "private": true,
-  "homepage" : "https://phensley.github.io/cldr-engine-react-demo/",
+  "homepage": "https://phensley.github.io/cldr-engine-react-demo/",
   "dependencies": {
-    "@phensley/cldr": "0.2.11",
+    "@phensley/cldr": "0.2.13",
     "icepick": "^1.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
