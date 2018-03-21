@@ -17,7 +17,11 @@ const ZONES: string[] = [
 const OPTIONS: GregorianFormatOptions[] = [
   { datetime: 'medium' },
   { date: 'full' },
+  { date: 'long' },
+  { date: 'short' },
+  { time: 'full' },
   { time: 'long' },
+  { time: 'short' },
   { date: 'yMMMd', time: 'Hms' }
 ];
 
