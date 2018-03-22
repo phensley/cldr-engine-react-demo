@@ -8,12 +8,18 @@ import { State } from '../reducers';
 
 class MatcherImpl extends React.Component<any> {
 
-  last: any | undefined = undefined;
+  last?: any;
 
   onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const match = localeMatcher.match(e.currentTarget.value);
-    this.last = match;
-    this.props.actions.changeLocale(match.locale);
+    const { value } = e.currentTarget;
+    if (value === '') {
+      this.last = undefined;
+      this.props.actions.changeLocale('en');
+    } else {
+      const match = localeMatcher.match(value);
+      this.last = match;
+      this.props.actions.changeLocale(match.locale);
+    }
   }
 
   distance = (): string => {
