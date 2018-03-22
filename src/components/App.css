@@ -32,3 +32,7 @@ button.switcher {
   right: 10px;
   top: 55px
 }
+
+span.entry input {
+  margin-right: 10px;
+}

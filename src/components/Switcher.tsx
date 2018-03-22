@@ -1,17 +1,16 @@
 import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
-import { availableLocales, Locale } from '@phensley/cldr';
+import { Locale } from '@phensley/cldr';
 
 import { changeLocale } from '../actions';
+import { allLocales } from '../locale';
 import { State } from '../reducers';
 
-const AVAILABLE_LOCALES = availableLocales();
-
 const randomLocale = () => {
-  const len = AVAILABLE_LOCALES.length;
+  const len = allLocales.length;
   const idx = Math.floor(Math.random() * len);
-  return AVAILABLE_LOCALES[idx];
+  return allLocales[idx];
 };
 
 class SwitcherImpl extends React.Component<any> {

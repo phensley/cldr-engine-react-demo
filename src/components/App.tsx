@@ -9,6 +9,7 @@ import { Info } from './Info';
 import { Nav } from './Nav';
 import { Currencies } from './Currencies';
 import { DecimalMath } from './DecimalMath';
+import { Matcher } from './Matcher';
 import { Numbers } from './Numbers';
 import { Gregorian } from './Gregorian';
 import { RelativeTime } from './RelativeTime';
@@ -26,6 +27,9 @@ class AppImpl extends React.Component<any> {
       <div>
         <Nav />
         <Switcher />
+        <div className='wrapper'>
+          <Matcher />
+        </div>
         <div className='wrapper' dir={dir}>
           <Info />
           <Numbers />
