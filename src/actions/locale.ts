@@ -1,5 +1,4 @@
 import { CLDR, Locale } from '@phensley/cldr';
-import { ActionCreator } from 'redux';
 import { ActionType } from './types';
 
 export interface LocaleAction {
