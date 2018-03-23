@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Engine, UnitFormatOptions, UnitType } from '@phensley/cldr';
+import { CLDR, UnitFormatOptions, UnitType } from '@phensley/cldr';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
 interface Props {
-  engine: Engine;
+  cldr: CLDR;
 }
 
 const UNITS: UnitType[] = [
@@ -27,10 +27,10 @@ const NUMBERS: string[] = [
   '100599.39'
 ];
 
-const formatQuanties = (engine: Engine, value: string, opts: UnitFormatOptions): JSX.Element => {
+const formatQuanties = (engcldrne: CLDR, value: string, opts: UnitFormatOptions): JSX.Element => {
   const elems: JSX.Element[] = [];
   UNITS.forEach((unit, i) => {
-    const s = engine.Units.format({ value, unit }, opts);
+    const s = engcldrne.Units.formatQuantity({ value, unit }, opts);
     elems.push(<span key={i}>{i > 0 ? <br /> : ''}{s}</span>);
   });
   return <span className='unit'>{elems}</span>;
@@ -45,11 +45,11 @@ class UnitsImpl extends React.Component<Props> {
   }
 
   units(): JSX.Element[] {
-    const { engine } = this.props;
+    const { cldr } = this.props;
     return NUMBERS.map((n, i) => {
       return (
         <tr key={i}>
-          {OPTIONS.map((o, j) => <td key={j}>{formatQuanties(engine, n, o)}</td>)}
+          {OPTIONS.map((o, j) => <td key={j}>{formatQuanties(cldr, n, o)}</td>)}
         </tr>
       );
     });
@@ -70,7 +70,7 @@ class UnitsImpl extends React.Component<Props> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({});

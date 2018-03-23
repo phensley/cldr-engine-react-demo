@@ -3,15 +3,14 @@ import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 import { State } from '../reducers';
 
-import { Engine } from '@phensley/cldr';
 import './App.css';
 import { Info } from './Info';
 import { Nav } from './Nav';
+import { Calendars } from './Calendars';
 import { Currencies } from './Currencies';
 import { DecimalMath } from './DecimalMath';
 import { Matcher } from './Matcher';
 import { Numbers } from './Numbers';
-import { Gregorian } from './Gregorian';
 import { RelativeTime } from './RelativeTime';
 import { Switcher } from './Switcher';
 import { Units } from './Units';
@@ -21,8 +20,8 @@ class AppImpl extends React.Component<any> {
   showReport = () => window.location.href = `${process.env.PUBLIC_URL}/report.html`;
 
   render(): JSX.Element {
-    const engine: Engine = this.props.engine;
-    const dir = engine.General.characterOrder();
+    const { cldr } = this.props;
+    const dir = cldr.General.characterOrder();
     return (
       <div>
         <Nav />
@@ -34,7 +33,7 @@ class AppImpl extends React.Component<any> {
           <Info />
           <Numbers />
           <Currencies />
-          <Gregorian />
+          <Calendars />
           <RelativeTime />
           <Units />
           <DecimalMath />
@@ -45,7 +44,7 @@ class AppImpl extends React.Component<any> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 const mapDispatch = (d: Dispatch<State>) => ({ });
 

@@ -16,7 +16,7 @@ const randomLocale = () => {
 class SwitcherImpl extends React.Component<any> {
 
   changeLocale = (): void => {
-    const { locale } = this.props.engine;
+    const locale = this.props.cldr.Locales.current();
     let next: Locale = locale;
     while (next.id === locale.id) {
       next = randomLocale();
@@ -34,7 +34,7 @@ class SwitcherImpl extends React.Component<any> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({

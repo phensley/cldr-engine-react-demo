@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Engine, DecimalFormatOptions } from '@phensley/cldr';
+import { CLDR, DecimalFormatOptions } from '@phensley/cldr';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
 interface Props {
-  engine: Engine;
+  cldr: CLDR;
 }
 
 const NUMBERS = [
@@ -38,11 +38,11 @@ class NumbersImpl extends React.Component<Props> {
   }
 
   numbers(): JSX.Element[] {
-    const { engine } = this.props;
+    const { cldr } = this.props;
     return NUMBERS.map((n, i) => {
       return (
         <tr key={i}>
-          {OPTIONS.map((o, j) => <td key={j}>{engine.Numbers.formatDecimal(n, o)}</td>)}
+          {OPTIONS.map((o, j) => <td key={j}>{cldr.Numbers.formatDecimal(n, o)}</td>)}
         </tr>
       );
     });
@@ -62,7 +62,7 @@ class NumbersImpl extends React.Component<Props> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({});

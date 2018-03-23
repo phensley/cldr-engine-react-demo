@@ -27,7 +27,7 @@ class MatcherImpl extends React.Component<any> {
   }
 
   placeholder = (): string => {
-    const { locale } = this.props.engine;
+    const locale = this.props.cldr.Locales.current();
     return `Tag (e.g. ${locale.tag.compact()})`;
   }
 
@@ -43,7 +43,7 @@ class MatcherImpl extends React.Component<any> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({

@@ -1,7 +1,7 @@
 const start = +(new Date());
 
 import wretch from 'wretch';
-import { CLDR, CLDROptions } from '@phensley/cldr';
+import { CLDRFramework, CLDROptions } from '@phensley/cldr';
 
 // Import the resource file containing information about the resource packs
 import Resource from '@phensley/cldr/packs/resource.json';
@@ -43,10 +43,10 @@ const options: CLDROptions = {
 };
 
 // Global instance of cldr configured for our app
-export const cldr = new CLDR(options);
+export const framework = new CLDRFramework(options);
 
 // Default cldr engine to be set in the locale store.
-export const English = cldr.get('en');
+export const English = framework.get('en');
 
 const elapsed = +(new Date()) - start;
 console.warn(`cldr static init: ${elapsed} ms`);

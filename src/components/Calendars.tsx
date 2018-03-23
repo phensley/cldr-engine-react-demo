@@ -2,19 +2,19 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Engine, ZonedDateTime, GregorianFormatOptions } from '@phensley/cldr';
+import { CLDR, ZonedDateTime, DateFormatOptions } from '@phensley/cldr';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
 interface Props {
-  engine: Engine;
+  cldr: CLDR;
 }
 
 const ZONES: string[] = [
   'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Pacific/Galapagos'
 ];
 
-const OPTIONS: GregorianFormatOptions[] = [
+const OPTIONS: DateFormatOptions[] = [
   { datetime: 'medium' },
   { date: 'full' },
   { date: 'long' },
@@ -25,12 +25,12 @@ const OPTIONS: GregorianFormatOptions[] = [
   { date: 'yMMMd', time: 'Hms' }
 ];
 
-const formatDate = (engine: Engine, now: Date, zoneId: string, opts: GregorianFormatOptions): string => {
+const formatDate = (cldr: CLDR, now: Date, zoneId: string, opts: DateFormatOptions): string => {
   const d = new ZonedDateTime(now, zoneId);
-  return engine.Gregorian.format(d, opts);
+  return cldr.Calendars.formatDate(d, opts);
 };
 
-class GregorianImpl extends React.Component<Props> {
+class CalendarsImpl extends React.Component<Props> {
 
   headings(): JSX.Element {
     return (
@@ -42,13 +42,13 @@ class GregorianImpl extends React.Component<Props> {
   }
 
   dates(): JSX.Element[] {
-    const { engine } = this.props;
+    const { cldr } = this.props;
     const now = new Date();
     return OPTIONS.map((o, i) => {
       return (
         <tr key={i}>
           <td>{renderOptions(o)}</td>
-          {ZONES.map((z, j) => <td key={j}>{formatDate(engine, now, z, o)}</td>)}
+          {ZONES.map((z, j) => <td key={j}>{formatDate(cldr, now, z, o)}</td>)}
         </tr>
       );
     });
@@ -71,9 +71,9 @@ class GregorianImpl extends React.Component<Props> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({});
 
-export const Gregorian = connect(mapState, mapDispatch)(GregorianImpl);
+export const Calendars = connect(mapState, mapDispatch)(CalendarsImpl);

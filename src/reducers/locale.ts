@@ -1,22 +1,22 @@
-import { Engine } from '@phensley/cldr';
-import { Action } from '../actions';
+import { CLDR } from '@phensley/cldr';
+import { Action, ActionType } from '../actions';
 import { English } from '../locale';
 import { Reducer } from 'redux';
 import * as icepick from 'icepick';
 
 export interface LocaleState {
-  engine: Engine;
+  cldr: CLDR;
 }
 
 export const initialLocaleState: LocaleState = icepick.freeze({
-  engine: English
+  cldr: English
 });
 
 export const locale: Reducer<LocaleState> =
-(state: LocaleState = initialLocaleState, action: Action<Engine>): LocaleState => {
+(state: LocaleState = initialLocaleState, action: Action<CLDR>): LocaleState => {
   switch (action.type) {
-  case 'locale/updateEngine':
-    return icepick.set(state, 'engine', action.payload);
+  case ActionType.LOCALE_UPDATE:
+    return icepick.set(state, 'cldr', action.payload);
   }
   return state;
 };

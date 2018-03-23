@@ -2,12 +2,12 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { Engine, CurrencyType, CurrencyFormatOptions } from '@phensley/cldr';
+import { CLDR, CurrencyType, CurrencyFormatOptions } from '@phensley/cldr';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
 interface Props {
-  engine: Engine;
+  cldr: CLDR;
 }
 
 const NUMBERS = [
@@ -29,10 +29,10 @@ const OPTIONS: CurrencyFormatOptions[] = [
   { group: true, style: 'code' }
 ];
 
-const formatAmount = (engine: Engine, n: string, opts: CurrencyFormatOptions): JSX.Element => {
+const formatAmount = (cldr: CLDR, n: string, opts: CurrencyFormatOptions): JSX.Element => {
   const elems: JSX.Element[] = [];
   CURRENCIES.forEach((c, i) => {
-    const s = engine.Numbers.formatCurrency(n, c, opts);
+    const s = cldr.Numbers.formatCurrency(n, c, opts);
     elems.push(<span key={i}>{i > 0 ? <br /> : ''}{s}</span>);
   });
   return <span className='currency'>{elems}</span>;
@@ -49,11 +49,11 @@ class CurrenciesImpl extends React.Component<Props> {
   }
 
   currencies(): JSX.Element[] {
-    const { engine } = this.props;
+    const { cldr } = this.props;
     return NUMBERS.map((n, i) => {
       return (
         <tr key={i}>
-          {OPTIONS.map((o, j) => <td key={j}>{formatAmount(engine, n, o)}</td>)}
+          {OPTIONS.map((o, j) => <td key={j}>{formatAmount(cldr, n, o)}</td>)}
         </tr>
       );
     });
@@ -74,7 +74,7 @@ class CurrenciesImpl extends React.Component<Props> {
 }
 
 const mapState = (s: State) => ({
-  engine: s.locale.engine
+  cldr: s.locale.cldr
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({});
