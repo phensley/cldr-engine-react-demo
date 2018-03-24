@@ -17,5 +17,5 @@ export function* changeLocale(action: Action<Locale>): IterableIterator<any> {
 }
 
 export function* localeSaga(): IterableIterator<any> {
-  yield takeEvery('locale/change', changeLocale);
+  yield takeEvery(ActionType.LOCALE_CHANGE, changeLocale);
 }

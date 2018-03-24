@@ -9,6 +9,7 @@ import { Nav } from './Nav';
 import { Calendars } from './Calendars';
 import { Currencies } from './Currencies';
 import { DecimalMath } from './DecimalMath';
+import { Lists } from './Lists';
 import { Matcher } from './Matcher';
 import { Numbers } from './Numbers';
 import { RelativeTime } from './RelativeTime';
@@ -37,6 +38,7 @@ class AppImpl extends React.Component<any> {
           <RelativeTime />
           <Units />
           <DecimalMath />
+          <Lists />
         </div>
       </div>
     );
