@@ -20,6 +20,9 @@ const loader = (language: string): any => EnglishPack;
 // All other languages are loaded asynchronously at runtime
 const asyncLoader = (language: string): Promise<any> => {
   return new Promise<any>((resolve, reject) => {
+    if (language === 'en') {
+      resolve(EnglishPack);
+    }
     wretch(`${process.env.PUBLIC_URL}/packs/${language}-${version}.json`)
       .get()
       .json(resolve)
