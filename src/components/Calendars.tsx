@@ -22,7 +22,8 @@ const OPTIONS: DateFormatOptions[] = [
   { time: 'full' },
   { time: 'long' },
   { time: 'short' },
-  { date: 'yMMMd', time: 'Hms' }
+  { skeleton: 'yMMMdHms' },
+  { skeleton: 'yEMMMMBh' }
 ];
 
 const formatDate = (cldr: CLDR, now: Date, zoneId: string, opts: DateFormatOptions): string => {
