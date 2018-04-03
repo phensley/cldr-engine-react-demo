@@ -2,8 +2,8 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, ZonedDateTime, DateFormatOptions } from '@phensley/cldr';
-import { calendarChangeSkeleton } from '../actions';
+import { CLDR, DateFormatOptions, UnixEpochTime } from '@phensley/cldr';
+import { calendarChangeDateSkeleton } from '../actions';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
@@ -26,11 +26,11 @@ const OPTIONS: DateFormatOptions[] = [
 ];
 
 const formatDate = (cldr: CLDR, now: Date, zoneId: string, opts: DateFormatOptions): string => {
-  const d = new ZonedDateTime(now, zoneId);
-  return cldr.Calendars.formatDate(d, opts);
+  const date: UnixEpochTime = { epoch: now, zoneId };
+  return cldr.Calendars.formatDate(date, opts);
 };
 
-class CalendarsImpl extends React.Component<any> {
+class DatesImpl extends React.Component<any> {
 
   headings(): JSX.Element {
     return (
@@ -42,9 +42,8 @@ class CalendarsImpl extends React.Component<any> {
   }
 
   onChange = (e: React.FormEvent<HTMLInputElement>): void => {
-    let { value } = e.currentTarget;
-    value = value === '' ? DEFAULT_SKELETON : value;
-    this.props.actions.calendarChangeSkeleton(value);
+    const { value } = e.currentTarget;
+    this.props.actions.calendarChangeDateSkeleton(value || DEFAULT_SKELETON);
   }
 
   dates(): JSX.Element[] {
@@ -73,7 +72,7 @@ class CalendarsImpl extends React.Component<any> {
   render(): JSX.Element {
     return (
       <div>
-        <h1>Gregorian calendar</h1>
+        <h1>Dates</h1>
         <table className='table'>
           <thead className='options'>
             {this.headings()}
@@ -90,11 +89,11 @@ class CalendarsImpl extends React.Component<any> {
 
 const mapState = (s: State) => ({
   cldr: s.locale.cldr,
-  skeleton: s.calendar.skeleton
+  skeleton: s.calendar.dateSkeleton
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({
-  actions: bindActionCreators({ calendarChangeSkeleton }, d)
+  actions: bindActionCreators({ calendarChangeDateSkeleton }, d)
 });
 
-export const Calendars = connect(mapState, mapDispatch)(CalendarsImpl);
+export const Dates = connect(mapState, mapDispatch)(DatesImpl);

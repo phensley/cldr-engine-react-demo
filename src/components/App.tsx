@@ -6,8 +6,9 @@ import { State } from '../reducers';
 import './App.css';
 import { Info } from './Info';
 import { Nav } from './Nav';
-import { Calendars } from './Calendars';
 import { Currencies } from './Currencies';
+import { Dates } from './Dates';
+import { DateIntervals } from './DateIntervals';
 import { DecimalMath } from './DecimalMath';
 import { Lists } from './Lists';
 import { Matcher } from './Matcher';
@@ -34,7 +35,8 @@ class AppImpl extends React.Component<any> {
           <Info />
           <Numbers />
           <Currencies />
-          <Calendars />
+          <Dates />
+          <DateIntervals />
           <RelativeTime />
           <Units />
           <DecimalMath />
