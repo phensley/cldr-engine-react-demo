@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, UnixEpochTime } from '@phensley/cldr';
+import { CLDR, ZonedDateTime } from '@phensley/cldr';
 import { calendarChangeIntervalSkeleton } from '../actions';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
@@ -30,9 +30,9 @@ const DELTAS: Delta[] = [
   ['289 days', DAY * 289]
 ];
 
-const formatInterval = (cldr: CLDR, start: UnixEpochTime, delta: number, opts: any): string => {
-  const { epoch, zoneId } = start;
-  return cldr.Calendars.formatDateInterval(start, { epoch: +epoch + delta, zoneId }, opts);
+const formatInterval = (cldr: CLDR, start: ZonedDateTime, delta: number, opts: any): string => {
+  const { date, zoneId } = start;
+  return cldr.Calendars.formatDateInterval(start, { date: +date + delta, zoneId }, opts);
 };
 
 class DateIntervalsImpl extends React.Component<any> {
@@ -53,7 +53,7 @@ class DateIntervalsImpl extends React.Component<any> {
 
   intervals(): JSX.Element[] {
     const { cldr, skeleton } = this.props;
-    const start: UnixEpochTime = { epoch: new Date(), zoneId: NEW_YORK };
+    const start: ZonedDateTime = { date: new Date(), zoneId: NEW_YORK };
     const len = OPTIONS.length;
     const res = OPTIONS.map((o, i) => {
       return (

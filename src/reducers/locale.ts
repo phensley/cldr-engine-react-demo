@@ -13,7 +13,8 @@ export const initialLocaleState: LocaleState = icepick.freeze({
 });
 
 export const locale: Reducer<LocaleState> =
-(state: LocaleState = initialLocaleState, action: LocaleAction): LocaleState => {
+  (state: LocaleState = initialLocaleState, action: LocaleAction): LocaleState => {
+
   switch (action.type) {
   case 'locale/update':
     return icepick.set(state, 'cldr', action.payload);

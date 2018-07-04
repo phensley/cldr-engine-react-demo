@@ -2,7 +2,7 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, DateFormatOptions, UnixEpochTime } from '@phensley/cldr';
+import { CLDR, DateFormatOptions } from '@phensley/cldr';
 import { calendarChangeDateSkeleton } from '../actions';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
@@ -25,10 +25,8 @@ const OPTIONS: DateFormatOptions[] = [
   { skeleton: 'yEMMMMBh' }
 ];
 
-const formatDate = (cldr: CLDR, now: Date, zoneId: string, opts: DateFormatOptions): string => {
-  const date: UnixEpochTime = { epoch: now, zoneId };
-  return cldr.Calendars.formatDate(date, opts);
-};
+const formatDate = (cldr: CLDR, date: Date, zoneId: string, opts: DateFormatOptions): string =>
+  cldr.Calendars.formatDate({ date, zoneId }, opts);
 
 class DatesImpl extends React.Component<any> {
 
