@@ -12,16 +12,13 @@
     "react-redux-router": "^0.0.14",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
-    "redux-saga": "^0.16.0",
-    "wretch": "^1.1.1"
+    "redux-saga": "^0.16.0"
   },
   "scripts": {
-    "build": "npm run packs && react-scripts-ts build",
-    "clean": "rimraf ./public/packs",
+		"build": "react-scripts-ts build",
     "deploy": "npm run build && npm run report && gh-pages -d build",
-    "packs": "rimraf ./public/packs && node scripts/copy-packs.js",
     "report": "source-map-explorer --html -m build/static/js/main.*.js >build/report.html",
-    "start": "npm run packs && react-scripts-ts start",
+    "start": "react-scripts-ts start",
     "test": "npm run packs && react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {
@@ -38,6 +35,7 @@
     "react-scripts-ts": "2.13.0",
     "rimraf": "^2.6.2",
     "source-map-explorer": "^1.5.0",
+    "ts-node": "^7.0.0",
     "tslint-no-circular-imports": "^0.2.1",
     "typescript": "2.8.1"
   }
