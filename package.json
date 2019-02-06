@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://phensley.github.io/cldr-engine-react-demo/",
   "dependencies": {
-    "@phensley/cldr": "0.7.3",
+    "@phensley/cldr": "0.7.5",
     "icepick": "^1.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -12,13 +12,16 @@
     "react-redux-router": "^0.0.14",
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
-    "redux-saga": "^0.16.0"
+    "redux-saga": "^0.16.0",
+		"wretch": "^1.1.1"
   },
   "scripts": {
-    "build": "react-scripts-ts build",
+    "build": "npm run packs && react-scripts-ts build",
+    "clean": "rimraf ./public/packs",
     "deploy": "npm run build && npm run report && gh-pages -d build",
+    "packs": "rimraf ./public/packs && node scripts/copy-packs.js",
     "report": "source-map-explorer --html -m build/static/js/main.*.js >build/report.html",
-    "start": "react-scripts-ts start",
+    "start": "npm run packs && react-scripts-ts start",
     "test": "npm run packs && react-scripts-ts test --env=jsdom"
   },
   "devDependencies": {
@@ -38,6 +41,6 @@
     "source-map-explorer": "^1.5.0",
     "ts-node": "^7.0.0",
     "tslint-no-circular-imports": "^0.2.1",
-    "typescript": "2.8.1"
+    "typescript": "3.x"
   }
 }
