@@ -28,6 +28,8 @@ class InfoImpl extends React.Component<Props> {
     const englishRegion = regionName(English, regionID);
 
     const currency = cldr.Numbers.getCurrencyForRegion(regionID);
+    const localCurrency = cldr.Numbers.getCurrencyDisplayName(currency);
+    const englishCurrency = English.Numbers.getCurrencyDisplayName(currency);
 
     return (
       <div>
@@ -46,9 +48,18 @@ class InfoImpl extends React.Component<Props> {
             <tr>
               <td>{id}</td>
               <td>{tag.toString()}</td>
-              <td>{localScript} {localScript !== englishScript ? `(${englishScript})` : ''}</td>
-              <td>{localRegion} {localRegion !== englishRegion ? `(${englishRegion})` : ''}</td>
-              <td>{currency}</td>
+              <td>
+                {localScript}
+                <br/>{localScript !== englishScript ? `(${englishScript})` : ''}
+                </td>
+              <td>
+                {localRegion}
+                <br/>{localRegion !== englishRegion ? `(${englishRegion})` : ''}
+              </td>
+              <td>
+                {currency} - {localCurrency}
+                <br/>{localCurrency !== englishCurrency ? `(${englishCurrency})` : ''}
+              </td>
             </tr>
           </tbody>
         </table>
