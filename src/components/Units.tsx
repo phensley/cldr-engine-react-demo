@@ -16,22 +16,28 @@ const UNITS: UnitType[] = [
 
 const OPTIONS: UnitFormatOptions[] = [
   { group: true },
-  { group: true, minimumFractionDigits: 1 },
+  { length: 'short' },
   { length: 'narrow' },
-  { maximumSignificantDigits: 3 }
+  { style: 'short', length: 'short', minimumSignificantDigits: 3 },
 ];
 
 const NUMBERS: string[] = [
   '.9997',
   '12345.6789',
-  '100599.39'
+  '1200599.3999'
 ];
 
-const formatQuanties = (engcldrne: CLDR, value: string, opts: UnitFormatOptions): JSX.Element => {
+const formatQuanties = (cldr: CLDR, unit: UnitType, opts: UnitFormatOptions): JSX.Element => {
   const elems: JSX.Element[] = [];
-  UNITS.forEach((unit, i) => {
-    const s = engcldrne.Units.formatQuantity({ value, unit }, opts);
-    elems.push(<span key={i}>{i > 0 ? <br /> : ''}{s}</span>);
+  NUMBERS.forEach((value, i) => {
+    const s1 = cldr.Units.formatQuantity({ value, unit }, opts);
+    const s2 = cldr.Units.formatQuantity({ value, unit, per: 'second' }, opts);
+    elems.push(
+      (
+      <>{i > 0 ? <br/> : ''}
+        <span key={i}>{s1}<br/>{s2}</span>
+      </>
+      ));
   });
   return <span className='unit'>{elems}</span>;
 };
@@ -46,10 +52,10 @@ class UnitsImpl extends React.Component<Props> {
 
   units(): JSX.Element[] {
     const { cldr } = this.props;
-    return NUMBERS.map((n, i) => {
+    return UNITS.map((u, i) => {
       return (
         <tr key={i}>
-          {OPTIONS.map((o, j) => <td key={j}>{formatQuanties(cldr, n, o)}</td>)}
+          {OPTIONS.map((o, j) => <td key={j}>{formatQuanties(cldr, u, o)}</td>)}
         </tr>
       );
     });

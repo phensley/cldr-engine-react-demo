@@ -16,6 +16,7 @@ import { Numbers } from './Numbers';
 import { RelativeTime } from './RelativeTime';
 import { Switcher } from './Switcher';
 import { Units } from './Units';
+import { UnitSequences } from './UnitSequences';
 
 class AppImpl extends React.Component<any> {
 
@@ -39,6 +40,7 @@ class AppImpl extends React.Component<any> {
           <DateIntervals />
           <RelativeTime />
           <Units />
+          <UnitSequences />
           <DecimalMath />
           <Lists />
         </div>
