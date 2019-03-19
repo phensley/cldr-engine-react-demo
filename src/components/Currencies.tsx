@@ -11,6 +11,7 @@ interface Props {
 }
 
 const NUMBERS = [
+  '0',
   '.098765',
   '1.07',
   '-12345.678',
@@ -21,7 +22,8 @@ const CURRENCIES: CurrencyType[] = [
   'USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'RUB'
 ];
 
-const OPTIONS: CurrencyFormatOptions[] = [
+const OPTIONS: (CurrencyFormatOptions | undefined)[] = [
+  undefined,
   { group: true },
   { group: true, style: 'name' },
   { group: true , style: 'short' },
@@ -29,7 +31,11 @@ const OPTIONS: CurrencyFormatOptions[] = [
   { group: true, style: 'code' }
 ];
 
-const formatAmount = (cldr: CLDR, n: string, opts: CurrencyFormatOptions): JSX.Element => {
+const formatAmount = (cldr: CLDR, n: string, opts?: CurrencyFormatOptions): JSX.Element => {
+  if (opts === undefined) {
+    return <span className='currency'>{n.toString()}</span>;
+  }
+
   const elems: JSX.Element[] = [];
   CURRENCIES.forEach((c, i) => {
     const s = cldr.Numbers.formatCurrency(n, c, opts);

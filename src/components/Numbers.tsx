@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, DecimalFormatOptions } from '@phensley/cldr';
+import { CLDR, DecimalFormatOptions, DecimalArg } from '@phensley/cldr';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
@@ -15,17 +15,26 @@ const NUMBERS = [
   '1.07',
   '12345.678',
   '999999.987',
-  String(Number.MAX_SAFE_INTEGER)
+  String(Number.MAX_SAFE_INTEGER),
+  Infinity,
+  NaN
 ];
 
-const OPTIONS: DecimalFormatOptions[] = [
-  {},
+const OPTIONS: (DecimalFormatOptions | undefined)[] = [
+  undefined,
   { group: true },
   { group: true, maximumFractionDigits: 1 },
   { group: true, maximumFractionDigits: 0, round: 'floor' },
   { style: 'short', maximumFractionDigits: 1, group: true },
   { style: 'long', group: true }
 ];
+
+const formatDecimal = (cldr: CLDR, n: DecimalArg, opts?: DecimalFormatOptions) => {
+  if (opts === undefined) {
+    return n.toString();
+  }
+  return cldr.Numbers.formatDecimal(n, opts);
+};
 
 class NumbersImpl extends React.Component<Props> {
 
@@ -42,7 +51,7 @@ class NumbersImpl extends React.Component<Props> {
     return NUMBERS.map((n, i) => {
       return (
         <tr key={i}>
-          {OPTIONS.map((o, j) => <td key={j}>{cldr.Numbers.formatDecimal(n, o)}</td>)}
+          {OPTIONS.map((o, j) => <td key={j}>{formatDecimal(cldr, n, o)}</td>)}
         </tr>
       );
     });

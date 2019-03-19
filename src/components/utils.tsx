@@ -1,6 +1,10 @@
 import * as React from 'react';
 
 export const renderOptions = (opts: any): JSX.Element => {
+  if (opts === undefined) {
+    return <div>(input)</div>;
+  }
+
   const elems: JSX.Element[] = [];
   const keys = Object.keys(opts);
   if (keys.length === 0) {
