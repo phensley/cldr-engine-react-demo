@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, RegionIdType, ScriptIdType } from '@phensley/cldr';
+import { CLDR, LanguageIdType, RegionIdType, ScriptIdType } from '@phensley/cldr';
 import { English } from '../locale';
 import { State } from '../reducers';
 
@@ -10,6 +10,7 @@ interface Props {
   cldr: CLDR;
 }
 
+const langName = (cldr: CLDR, id: string): string => cldr.General.getLanguageDisplayName(id as LanguageIdType);
 const scriptName = (cldr: CLDR, id: string): string => cldr.General.getScriptDisplayName(id as ScriptIdType);
 const regionName = (cldr: CLDR, id: string): string => cldr.General.getRegionDisplayName(id as RegionIdType);
 
@@ -18,6 +19,10 @@ class InfoImpl extends React.Component<Props> {
   render(): JSX.Element {
     const { cldr } = this.props;
     const { id, tag } = cldr.Locales.current();
+
+    const langID = tag.language();
+    const localLang = langName(cldr, langID);
+    const englishLang = langName(English, langID);
 
     const scriptID = tag.script();
     const localScript = scriptName(cldr, scriptID);
@@ -39,6 +44,7 @@ class InfoImpl extends React.Component<Props> {
             <tr>
               <th>ID</th>
               <th>Language Tag</th>
+              <th>Language</th>
               <th>Script</th>
               <th>Region</th>
               <th>Region Currency</th>
@@ -49,9 +55,13 @@ class InfoImpl extends React.Component<Props> {
               <td>{id}</td>
               <td>{tag.toString()}</td>
               <td>
+                {localLang}
+                <br/>{localLang !== englishLang ? `(${englishLang})` : ''}
+              </td>
+              <td>
                 {localScript}
                 <br/>{localScript !== englishScript ? `(${englishScript})` : ''}
-                </td>
+              </td>
               <td>
                 {localRegion}
                 <br/>{localRegion !== englishRegion ? `(${englishRegion})` : ''}
