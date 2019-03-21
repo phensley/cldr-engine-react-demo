@@ -27,7 +27,7 @@ class MatcherImpl extends React.Component<any> {
   }
 
   placeholder = (): string => {
-    const locale = this.props.cldr.Locales.current();
+    const locale = this.props.cldr.General.locale();
     return `Tag (e.g. ${locale.tag.compact()})`;
   }
 

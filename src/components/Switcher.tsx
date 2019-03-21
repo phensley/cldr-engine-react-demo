@@ -16,7 +16,7 @@ const randomLocale = () => {
 class SwitcherImpl extends React.Component<any> {
 
   changeLocale = (): void => {
-    const locale = this.props.cldr.Locales.current();
+    const locale = this.props.cldr.General.locale();
     let next: Locale = locale;
     while (next.id === locale.id) {
       next = randomLocale();

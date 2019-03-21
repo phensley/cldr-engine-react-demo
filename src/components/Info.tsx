@@ -18,7 +18,7 @@ class InfoImpl extends React.Component<Props> {
 
   render(): JSX.Element {
     const { cldr } = this.props;
-    const { id, tag } = cldr.Locales.current();
+    const { id, tag } = cldr.General.locale();
 
     const langID = tag.language();
     const localLang = langName(cldr, langID);

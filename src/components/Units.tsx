@@ -32,12 +32,7 @@ const formatQuanties = (cldr: CLDR, unit: UnitType, opts: UnitFormatOptions): JS
   NUMBERS.forEach((value, i) => {
     const s1 = cldr.Units.formatQuantity({ value, unit }, opts);
     const s2 = cldr.Units.formatQuantity({ value, unit, per: 'second' }, opts);
-    elems.push(
-      (
-      <>{i > 0 ? <br/> : ''}
-        <span key={i}>{s1}<br/>{s2}</span>
-      </>
-      ));
+    elems.push(<span key={i}>{i > 0 ? <br/> : ''}{s1}<br/>{s2}</span>);
   });
   return <span className='unit'>{elems}</span>;
 };
