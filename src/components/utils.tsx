@@ -18,10 +18,21 @@ export const renderOptions = (opts: any): JSX.Element => {
   return <div>{elems}</div>;
 };
 
-export const languageName = (cldr: CLDR, id: string): string =>
-  cldr.General.getLanguageDisplayName(id as LanguageIdType) ||
-  cldr.General.getLanguageDisplayName('und');
+const UNKNOWN = '*';
 
-export const scriptName = (cldr: CLDR, id: string): string =>   cldr.General.getScriptDisplayName(id as ScriptIdType);
+const isUnknown = (s: string) => !s || s.toLowerCase().indexOf('unknown') !== -1;
 
-export const regionName = (cldr: CLDR, id: string): string =>   cldr.General.getRegionDisplayName(id as RegionIdType);
+export const languageName = (cldr: CLDR, id: string): string => {
+  const r = cldr.General.getLanguageDisplayName(id as LanguageIdType);
+  return isUnknown(r) ? UNKNOWN : r;
+};
+
+export const scriptName = (cldr: CLDR, id: string): string => {
+  const r = cldr.General.getScriptDisplayName(id as ScriptIdType);
+  return isUnknown(r) ? UNKNOWN : r;
+};
+
+export const regionName = (cldr: CLDR, id: string): string => {
+  const r = cldr.General.getRegionDisplayName(id as RegionIdType);
+  return isUnknown(r) ? UNKNOWN : r;
+};
