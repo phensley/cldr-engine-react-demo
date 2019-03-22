@@ -3,3 +3,43 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.matcher {
+  display: flex;
+  flex-direction: row;
+}
+
+.matcher input {
+  margin-right: 10px;
+}
+
+.matcher .distance {
+  margin: 0 10px;
+  color: gray;
+}
+
+.matcher td {
+  border: 1px solid gray;
+  padding: 2px 7px;
+}
+
+.matcher td.identity {
+  color: gray;
+  font-size: 0.9em;
+}
+
+.matcher td.arrow {
+  font-size: 1.8em;
+  color: gray;
+  margin: 0 10px;
+  border: none;
+}
+
+.matcher td.userinput {
+  color: black;
+  border: none;
+}
+
+.heading {
+  font-size: 1.3em;
+}

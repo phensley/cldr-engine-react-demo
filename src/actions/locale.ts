@@ -1,9 +1,13 @@
-import { CLDR, Locale } from '@phensley/cldr';
+import { CLDR, LocaleMatch, LanguageTag } from '@phensley/cldr';
 import { Action } from './types';
 
-export interface LocaleChangeAction extends Action<Locale> {
+export interface LocaleInfo extends LocaleMatch {
+  input: LanguageTag;
+}
+
+export interface LocaleChangeAction extends Action<LocaleInfo> {
   type: 'locale/change';
-  payload: Locale;
+  payload: LocaleInfo;
 }
 
 export interface LocaleUpdateAction extends Action<CLDR> {
@@ -14,8 +18,8 @@ export interface LocaleUpdateAction extends Action<CLDR> {
 export type LocaleAction =
   LocaleChangeAction | LocaleUpdateAction;
 
-export const changeLocale = (language: Locale): LocaleAction =>
-  ({ type: 'locale/change', payload: language });
+export const changeLocale = (info: LocaleInfo): LocaleAction =>
+  ({ type: 'locale/change', payload: info });
 
 export const updateLocale = (cldr: CLDR): LocaleAction =>
   ({ type: 'locale/update', payload: cldr });

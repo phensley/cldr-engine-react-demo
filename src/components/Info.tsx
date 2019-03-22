@@ -2,27 +2,26 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, LanguageIdType, RegionIdType, ScriptIdType } from '@phensley/cldr';
+import { CLDR } from '@phensley/cldr';
+import { LocaleInfo } from '../actions';
 import { English } from '../locale';
 import { State } from '../reducers';
+import { languageName, scriptName, regionName } from './utils';
 
 interface Props {
   cldr: CLDR;
+  info: LocaleInfo;
 }
-
-const langName = (cldr: CLDR, id: string): string => cldr.General.getLanguageDisplayName(id as LanguageIdType);
-const scriptName = (cldr: CLDR, id: string): string => cldr.General.getScriptDisplayName(id as ScriptIdType);
-const regionName = (cldr: CLDR, id: string): string => cldr.General.getRegionDisplayName(id as RegionIdType);
 
 class InfoImpl extends React.Component<Props> {
 
   render(): JSX.Element {
-    const { cldr } = this.props;
+    const { cldr, info } = this.props;
     const { id, tag } = cldr.General.locale();
 
     const langID = tag.language();
-    const localLang = langName(cldr, langID);
-    const englishLang = langName(English, langID);
+    const localLang = languageName(cldr, langID);
+    const englishLang = languageName(English, langID);
 
     const scriptID = tag.script();
     const localScript = scriptName(cldr, scriptID);
@@ -38,10 +37,10 @@ class InfoImpl extends React.Component<Props> {
 
     return (
       <div>
-        <h1>Locale</h1>
         <table className='table'>
           <thead>
             <tr>
+              <th>Distance</th>
               <th>ID</th>
               <th>Language Tag</th>
               <th>Language</th>
@@ -52,23 +51,24 @@ class InfoImpl extends React.Component<Props> {
           </thead>
           <tbody>
             <tr>
-              <td>{id}</td>
-              <td>{tag.toString()}</td>
+              <td>{info ? info.distance : 0}<br/>&nbsp;</td>
+              <td>{id}<br/>&nbsp;</td>
+              <td>{tag.toString()}<br/>&nbsp;</td>
               <td>
                 {localLang}
-                <br/>{localLang !== englishLang ? `(${englishLang})` : ''}
+                <br/>{localLang !== englishLang ? `(${englishLang})` : '\u00a0'}
               </td>
               <td>
                 {localScript}
-                <br/>{localScript !== englishScript ? `(${englishScript})` : ''}
+                <br/>{localScript !== englishScript ? `(${englishScript})` : '\u00a0'}
               </td>
               <td>
                 {localRegion}
-                <br/>{localRegion !== englishRegion ? `(${englishRegion})` : ''}
+                <br/>{localRegion !== englishRegion ? `(${englishRegion})` : '\u00a0'}
               </td>
               <td>
                 {currency} - {localCurrency}
-                <br/>{localCurrency !== englishCurrency ? `(${englishCurrency})` : ''}
+                <br/>{localCurrency !== englishCurrency ? `(${englishCurrency})` : '\u00a0'}
               </td>
             </tr>
           </tbody>
@@ -80,7 +80,8 @@ class InfoImpl extends React.Component<Props> {
 }
 
 const mapState = (s: State) => ({
-  cldr: s.locale.cldr
+  cldr: s.locale.cldr,
+  info: s.locale.info
 });
 
 const mapDispatch = (d: Dispatch<State>) => ({});

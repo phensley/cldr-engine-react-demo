@@ -21,7 +21,7 @@ class SwitcherImpl extends React.Component<any> {
     while (next.id === locale.id) {
       next = randomLocale();
     }
-    this.props.actions.changeLocale(next);
+    this.props.actions.changeLocale({ locale: next, distance: 0 });
   }
 
   render(): JSX.Element {

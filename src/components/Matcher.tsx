@@ -2,28 +2,32 @@ import * as React from 'react';
 import { bindActionCreators, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { changeLocale } from '../actions';
+import { CLDR, CLDRFramework } from '@phensley/cldr';
+import { InputInfo } from './InputInfo';
+import { changeLocale, LocaleInfo } from '../actions';
 import { localeMatcher } from '../locale';
 import { State } from '../reducers';
 
-class MatcherImpl extends React.Component<any> {
+const { parseLanguageTag } = CLDRFramework;
 
-  last?: any;
+interface Props {
+  cldr: CLDR;
+  actions: any;
+}
+
+class MatcherImpl extends React.Component<Props> {
+
+  last?: LocaleInfo;
 
   onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    const { value } = e.currentTarget;
+    let { value } = e.currentTarget;
     if (value === '') {
-      this.last = undefined;
-      this.props.actions.changeLocale('en');
-    } else {
-      const match = localeMatcher.match(value);
-      this.last = match;
-      this.props.actions.changeLocale(match.locale);
+      value = 'und';
     }
-  }
-
-  distance = (): string => {
-    return this.last !== undefined ? `distance: ${this.last.distance}` : '';
+    const input = parseLanguageTag(value);
+    const match = localeMatcher.match(value);
+    this.last = { ...match, input };
+    this.props.actions.changeLocale(this.last);
   }
 
   placeholder = (): string => {
@@ -33,10 +37,12 @@ class MatcherImpl extends React.Component<any> {
 
   render(): JSX.Element {
     return (
-      <span className='entry'>
-        <input type='text' className='smooth' placeholder={this.placeholder()} onChange={this.onChange} />
-        <span>{this.distance()}</span>
-      </span>
+      <div className='matcher'>
+        <div>
+          <input type='text' className='smooth' placeholder={this.placeholder()} onChange={this.onChange} />
+        </div>
+        <InputInfo />
+      </div>
     );
   }
 
