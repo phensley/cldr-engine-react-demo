@@ -17,11 +17,15 @@ const FIELDS: DateFieldType[] = [
   'second', 'hour', 'day', 'week', 'month', 'tue', 'year'
 ];
 
-const renderRow = (cldr: CLDR, i: number, q: number, opts: RelativeTimeFormatOptions): JSX.Element => (
-  <tr key={i}>
-    {FIELDS.map((f, j) => <td key={j}>{cldr.Calendars.formatRelativeTimeField(q, f, opts)}</td>)}
-  </tr>
-);
+const renderRow = (cldr: CLDR, i: number, q: number, opts: RelativeTimeFormatOptions): JSX.Element => {
+  opts.context = 'standalone';
+  const result = FIELDS.map(f => cldr.Calendars.formatRelativeTimeField(q, f, opts));
+  return (
+    <tr key={i}>
+      {result.map((r, j) => <td key={j}>{r}</td>)}
+    </tr>
+  );
+};
 
 class RelativeTimeImpl extends React.Component<Props> {
 

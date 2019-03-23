@@ -56,6 +56,7 @@ class DateIntervalsImpl extends React.Component<any> {
     const start: ZonedDateTime = { date: new Date(), zoneId: NEW_YORK };
     const len = OPTIONS.length;
     const res = OPTIONS.map((o, i) => {
+      o.context = 'standalone';
       return (
         <tr key={i}>
           <td>{renderOptions(o)}</td>
@@ -64,10 +65,12 @@ class DateIntervalsImpl extends React.Component<any> {
       );
     });
 
+    const opts = { skeleton, context: 'standalone' };
+    const result = DELTAS.map(d => formatInterval(cldr, start, d[1], opts));
     res.push(
       <tr key={len}>
         <td><input type='text' placeholder={DEFAULT_SKELETON} onChange={this.onChange} /></td>
-        {DELTAS.map((d, j) => <td key={j}>{formatInterval(cldr, start, d[1], { skeleton })}</td>)}
+        {result.map((r, j) => <td key={j}>{r}</td>)}
       </tr>
     );
 

@@ -32,14 +32,20 @@ class MatcherImpl extends React.Component<Props> {
 
   placeholder = (): string => {
     const locale = this.props.cldr.General.locale();
-    return `Tag (e.g. ${locale.tag.compact()})`;
+    return `(${locale.tag.compact()})`;
   }
 
   render(): JSX.Element {
     return (
       <div className='matcher'>
         <div>
-          <input type='text' className='smooth' placeholder={this.placeholder()} onChange={this.onChange} />
+          <b>Tag</b>
+          <input
+            type='text'
+            className='smooth'
+            placeholder={this.placeholder()}
+            onChange={this.onChange}
+          />
         </div>
         <InputInfo />
       </div>

@@ -2,6 +2,10 @@ div.wrapper {
   margin: 10px;
 }
 
+div.spacer {
+  height: 210px;
+}
+
 h1 {
   font-size: 2em;
   margin: 0.2em 0;
@@ -14,7 +18,7 @@ table.table tbody > :nth-child(2n-1) {
   background: #efefef;
 }
 
-table.table thead.options {
+.options {
   font-size: .85em;
   color: #0074D9;
 }
@@ -27,12 +31,32 @@ table.table tbody.math {
   font-size: 1em;
 }
 
-button.switcher {
+.switcher {
   position: fixed;
-  right: 10px;
-  top: 55px
+  left: 0;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 3px 3px 2px 2px black;
+}
+
+.switcher .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 10px;
+}
+
+.switcher button {
+  margin-right: 20px;
 }
 
 span.entry input {
   margin-right: 10px;
+}
+
+input.smooth {
+  margin-left: 10px;
 }

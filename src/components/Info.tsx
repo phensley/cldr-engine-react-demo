@@ -36,7 +36,6 @@ class InfoImpl extends React.Component<Props> {
     const englishCurrency = English.Numbers.getCurrencyDisplayName(currency);
 
     return (
-      <div>
         <table className='table'>
           <thead>
             <tr>
@@ -73,7 +72,6 @@ class InfoImpl extends React.Component<Props> {
             </tr>
           </tbody>
         </table>
-      </div>
     );
   }
 

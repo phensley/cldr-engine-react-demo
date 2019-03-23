@@ -6,6 +6,9 @@ import { Locale } from '@phensley/cldr';
 import { changeLocale } from '../actions';
 import { allLocales } from '../locale';
 import { State } from '../reducers';
+import { Info } from './Info';
+import { Nav } from './Nav';
+import { Matcher } from './Matcher';
 
 const randomLocale = () => {
   const len = allLocales.length;
@@ -26,9 +29,19 @@ class SwitcherImpl extends React.Component<any> {
 
   render(): JSX.Element {
     return (
-      <button className='btn btn-a btn-sm smooth switcher' onClick={this.changeLocale}>
-      Random Locale
-      </button>
+      <div className='switcher'>
+        <Nav />
+        <div className='row'>
+          <Matcher />
+          <button className='btn btn-a btn-sm smooth' onClick={this.changeLocale}>
+          Random Locale
+          </button>
+        </div>
+        <div className='row'>
+          <Info />
+        </div>
+      </div>
+
     );
   }
 }

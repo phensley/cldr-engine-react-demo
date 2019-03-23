@@ -49,6 +49,7 @@ class DatesImpl extends React.Component<any> {
     const now = new Date();
     const len = OPTIONS.length;
     const res = OPTIONS.map((o, i) => {
+      o.context = 'standalone';
       return (
         <tr key={i}>
           <td>{renderOptions(o)}</td>
@@ -58,10 +59,13 @@ class DatesImpl extends React.Component<any> {
     });
 
     // Dynamic skeleton field
+    const context = 'standalone';
+    const { skeleton } = this.props;
+    const result = ZONES.map(z => formatDate(cldr, now, z, { skeleton, context }));
     res.push(
       <tr key={len}>
         <td><input type='text' placeholder={DEFAULT_SKELETON} onChange={this.onChange} /></td>
-        {ZONES.map((z, j) => <td key={j}>{formatDate(cldr, now, z, { skeleton: this.props.skeleton })}</td>)}
+        {result.map((r, j) => <td key={j}>{r}</td>)}
       </tr>
     );
     return res;
@@ -72,7 +76,7 @@ class DatesImpl extends React.Component<any> {
       <div>
         <h1>Dates</h1>
         <table className='table'>
-          <thead className='options'>
+          <thead>
             {this.headings()}
           </thead>
           <tbody>

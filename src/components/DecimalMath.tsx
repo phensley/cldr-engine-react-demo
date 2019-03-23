@@ -7,7 +7,7 @@ import { State } from '../reducers';
 import { mathChangeA, mathChangeB } from '../actions';
 
 const SCALE_1 = 3;
-const SCALE_2 = 30;
+const SCALE_2 = 20;
 
 const DEFAULT_A = '123.45';
 const DEFAULT_B = '0.0009';
@@ -18,7 +18,7 @@ const NUMBERS: Pair[] = [
   ['-10', '-6'],
   ['7.365', '0'],
   ['-5', '17.311'],
-  ['15.7e30', '3.1415926535897932384']
+  ['15.7e20', '3.1415926535897932384']
 ];
 
 const calculate = (as: string, bs: string, scale: number): JSX.Element => {

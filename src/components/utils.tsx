@@ -3,7 +3,7 @@ import { CLDR, LanguageIdType, RegionIdType, ScriptIdType } from '@phensley/cldr
 
 export const renderOptions = (opts: any): JSX.Element => {
   if (opts === undefined) {
-    return <div>(input)</div>;
+    return <div className='options'>(input)</div>;
   }
 
   const elems: JSX.Element[] = [];
@@ -15,7 +15,7 @@ export const renderOptions = (opts: any): JSX.Element => {
       elems.push(<span key={i}>{i > 0 ? <br /> : ''}{`${k}: ${opts[k]}`}</span>);
     });
   }
-  return <div>{elems}</div>;
+  return <div className='options'>{elems}</div>;
 };
 
 const UNKNOWN = '*';
