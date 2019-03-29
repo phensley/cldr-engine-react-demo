@@ -48,6 +48,9 @@ const options: CLDROptions = {
 // Global instance of cldr configured for our app
 export const framework = new CLDRFramework(options);
 
+// Every resource pack includes the version of the cldr it was built from
+export const cldrVersion = EnglishPack.cldr;
+
 // Default cldr engine to be set in the locale store.
 export const English = framework.get('en');
 

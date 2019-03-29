@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { CLDRFramework } from '@phensley/cldr';
+import { cldrVersion } from '../locale';
 
 export class Nav extends React.Component<any> {
 
@@ -8,8 +9,14 @@ export class Nav extends React.Component<any> {
     return (
       <nav className='nav'>
         <div className='container'>
-          <a href='https://github.com/phensley/cldr-engine' className='pagename'>@phensley/cldr {version}</a>
+          <a
+            href='https://github.com/phensley/cldr-engine'
+            className='pagename'
+          >
+            @phensley/cldr
+          </a>
           <a href='https://github.com/phensley/cldr-engine-react-demo'>Demo Github</a>
+          <a className='version'>{version} &mdash; cldr data {cldrVersion}</a>
         </div>
       </nav>
     );

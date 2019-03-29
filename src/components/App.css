@@ -60,3 +60,7 @@ span.entry input {
 input.smooth {
   margin-left: 10px;
 }
+a.version {
+  display: relative;
+  right: 0;
+}
