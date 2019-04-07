@@ -11,6 +11,7 @@ import { DecimalMath } from './DecimalMath';
 import { Lists } from './Lists';
 import { Numbers } from './Numbers';
 import { RelativeTime } from './RelativeTime';
+import { Rounding } from './Rounding';
 import { Switcher } from './Switcher';
 import { Units } from './Units';
 import { UnitSequences } from './UnitSequences';
@@ -35,6 +36,7 @@ class AppImpl extends React.Component<any> {
           <Units />
           <UnitSequences />
           <DecimalMath />
+          <Rounding />
           <Lists />
         </div>
       </div>

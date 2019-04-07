@@ -27,6 +27,21 @@ table.table tbody.math {
   font-size: .8em;
 }
 
+table.rounding {
+  width: 100%;
+  border-collapse: separate;
+}
+
+table.rounding th,
+table.rounding td {
+  text-align: center;
+  padding: 5px 10px;
+}
+
+table.rounding .spacer {
+  width: 10px;
+}
+
 .btn {
   font-size: 1em;
 }
