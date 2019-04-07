@@ -4,8 +4,7 @@ import { Decimal, RoundingModeType } from '@phensley/cldr';
 
 const MODES: string[] = [
   'ceiling', 'floor', '', 'down', 'up',
-  '', 'half-even', 'half-down', 'half-up',
-  '', '05up'
+  '', 'half-even', 'half-down', 'half-up'
 ];
 
 const COLORS: string[] = [

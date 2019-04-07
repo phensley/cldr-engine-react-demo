@@ -28,7 +28,8 @@ table.table tbody.math {
 }
 
 table.rounding {
-  width: 100%;
+  text-align: center;
+  width: 90%;
   border-collapse: separate;
 }
 
@@ -36,10 +37,11 @@ table.rounding th,
 table.rounding td {
   text-align: center;
   padding: 5px 10px;
+  width: 60px;
 }
 
 table.rounding .spacer {
-  width: 10px;
+  width: 5px;
 }
 
 .btn {
