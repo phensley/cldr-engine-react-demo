@@ -1,6 +1,5 @@
 import * as icepick from 'icepick';
-import { Reducer } from 'redux';
-import { MathAction } from '../actions/math';
+import { AnyAction, Reducer } from 'redux';
 
 export interface MathState {
   userA: string;
@@ -13,7 +12,7 @@ export const initialMathState: MathState = icepick.freeze({
 });
 
 export const math: Reducer<MathState> =
-  (state: MathState = initialMathState, action: MathAction): MathState => {
+  (state: MathState = initialMathState, action: AnyAction): MathState => {
     switch (action.type) {
     case 'math/changeA':
       return icepick.set(state, 'userA', action.payload);
