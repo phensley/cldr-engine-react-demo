@@ -4,8 +4,10 @@
   "private": true,
   "homepage": "https://phensley.github.io/cldr-engine-react-demo/",
   "browserslist": [
-    "last 2 version",
-    "> 1%"
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
   ],
   "dependencies": {
     "@phensley/cldr": "next",
@@ -17,7 +19,7 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-saga": "^0.16.0",
-		"wretch": "^1.1.1"
+    "wretch": "^1.1.1"
   },
   "scripts": {
     "build": "npm run packs && react-scripts build",
