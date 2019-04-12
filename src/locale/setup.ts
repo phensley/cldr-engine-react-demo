@@ -22,6 +22,7 @@ const asyncLoader = (language: string): Promise<any> => {
   return new Promise<any>((resolve, reject) => {
     if (language === 'en') {
       resolve(EnglishPack);
+      return;
     }
     wretch(`${process.env.PUBLIC_URL}/packs/${language}-${version}.json`)
       .get()
