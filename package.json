@@ -10,7 +10,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@phensley/cldr": "0.14.5",
+    "@phensley/cldr": "0.14.8",
     "icepick": "^1.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
@@ -26,7 +26,7 @@
     "clean": "rimraf ./public/packs",
     "deploy": "npm run build && npm run report && gh-pages -d build",
     "packs": "rimraf ./public/packs && node scripts/copy-packs.js",
-    "report": "source-map-explorer --html -m build/static/js/main.*.js >build/report.html",
+    "report": "source-map-explorer --html -m 'build/static/js/*.*' >build/report.html",
     "start": "npm run packs && react-scripts start",
     "test": "npm run packs && react-scripts test --env=jsdom"
   },
@@ -42,7 +42,7 @@
     "gh-pages": "^1.1.0",
     "react-scripts": "2.1.8",
     "rimraf": "^2.6.2",
-    "source-map-explorer": "^1.5.0",
+    "source-map-explorer": "^1.8.0",
     "ts-node": "^7.0.0",
     "tslint-no-circular-imports": "^0.2.1",
     "typescript": "*"
