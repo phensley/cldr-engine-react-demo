@@ -18,3 +18,7 @@ yarn-debug.log*
 yarn-error.log*
 
 yarn.lock
+
+# file that create-react-app dumps into src for some reason
+src/react-app-env.d.ts
+
