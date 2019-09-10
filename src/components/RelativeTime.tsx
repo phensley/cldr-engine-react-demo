@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
-import { CLDR, DateFieldType, RelativeTimeFormatOptions } from '@phensley/cldr';
+import { CLDR, RelativeTimeFieldType, RelativeTimeFormatOptions } from '@phensley/cldr';
 import { State } from '../reducers';
 
 interface Props {
@@ -13,7 +13,7 @@ const QUANTITIES = [
   -5, -1, 0, 1, 7
 ];
 
-const FIELDS: DateFieldType[] = [
+const FIELDS: RelativeTimeFieldType[] = [
   'second', 'hour', 'day', 'week', 'month', 'tue', 'year'
 ];
 
