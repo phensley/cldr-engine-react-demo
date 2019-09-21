@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { State } from '../reducers';
 
 import './App.css';
+// import { CalendarMath } from './CalendarMath';
 import { Currencies } from './Currencies';
 import { Dates } from './Dates';
 import { DateIntervals } from './DateIntervals';
@@ -32,6 +33,7 @@ class AppImpl extends React.Component<any> {
           <Currencies />
           <Dates />
           <DateIntervals />
+          {/* <CalendarMath /> */}
           <RelativeTime />
           <Units />
           <UnitSequences />

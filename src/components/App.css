@@ -17,7 +17,9 @@ h1 {
 table.table tbody > :nth-child(2n-1) {
   background: #efefef;
 }
-
+table.half-width {
+  width: 50%;
+}
 .options {
   font-size: .85em;
   color: #0074D9;
@@ -76,6 +78,10 @@ span.entry input {
 
 input.smooth {
   margin-left: 10px;
+}
+
+input[type="number"] {
+  width: 60px;
 }
 a.version {
   display: relative;
