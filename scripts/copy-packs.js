@@ -30,6 +30,7 @@ const main = () => {
     process.exit(1);
   }
 
+  let i = 0;
   names.forEach(path => {
     const name = basename(path, '.json');
     const outpath = join(dst, `${name}-${PKGHASH}.json`);
@@ -37,10 +38,13 @@ const main = () => {
       return;
     }
 
-    console.warn(`copying ${outpath}..`);
+    //console.warn(`copying ${outpath}..`);
     const raw = fs.readFileSync(path);
     fs.writeFileSync(outpath, raw);
+    i++;
   });
+  console.log(`Copied ${i} resource packs with hash ${PKGHASH}`);
 };
 
 main();
+
