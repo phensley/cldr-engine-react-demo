@@ -30,6 +30,7 @@ NUMBERS.forEach(value => {
 
 const OPTIONS: UnitFormatOptions[] = [
   { group: true },
+  { style: 'long', length: 'short' },
   { length: 'narrow' },
   { length: 'short' },
   { style: 'short', length: 'short', minimumSignificantDigits: 3 },

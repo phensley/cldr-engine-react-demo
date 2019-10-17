@@ -11,6 +11,7 @@ interface Props {
 }
 
 const NUMBERS = [
+  '1',
   '0',
   '.098765',
   '1.07',
@@ -25,6 +26,7 @@ const CURRENCIES: CurrencyType[] = [
 const OPTIONS: (CurrencyFormatOptions | undefined)[] = [
   undefined,
   { group: true },
+  { style: 'code' },
   { group: true, style: 'name' },
   { group: true , style: 'short' },
   { group: true, style: 'accounting' },
