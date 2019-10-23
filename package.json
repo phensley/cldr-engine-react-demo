@@ -10,7 +10,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@phensley/cldr": "0.19.4",
+    "@phensley/cldr": "0.19.5",
     "icepick": "^1.3.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
