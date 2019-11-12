@@ -1,18 +1,18 @@
-const start = +(new Date());
-
 import wretch from 'wretch';
 import { CLDRFramework, CLDROptions } from '@phensley/cldr';
 
 // Import the resource file containing information about the resource packs
 import Resource from '@phensley/cldr/packs/resource.json';
 
+// Import default language directly so it's always available
+import EnglishPack from '@phensley/cldr/packs/en.json';
+
+const start = +(new Date());
+
 // Copy the sha256 hash of all of the packages, to use for cache busting.
 // Note: Resource files are be copied by the build process with the
 // matching version in the path.
 const version = Resource.sha256.substring(0, 10);
-
-// Import default language directly so it's always available
-import EnglishPack from '@phensley/cldr/packs/en.json';
 
 // Load English synchronously (see below)
 const loader = (language: string): any => EnglishPack;

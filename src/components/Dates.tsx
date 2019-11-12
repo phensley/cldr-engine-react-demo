@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { bindActionCreators, Dispatch } from 'redux';
+import { bindActionCreators, AnyAction, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CLDR, DateFormatOptions } from '@phensley/cldr';
@@ -94,7 +94,7 @@ const mapState = (s: State) => ({
   skeleton: s.calendar.dateSkeleton
 });
 
-const mapDispatch = (d: Dispatch<State>) => ({
+const mapDispatch = (d: Dispatch<AnyAction>) => ({
   actions: bindActionCreators({ calendarChangeDateSkeleton }, d)
 });
 

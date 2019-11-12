@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { bindActionCreators, Dispatch } from 'redux';
+import { bindActionCreators, AnyAction, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CLDR, CLDRFramework } from '@phensley/cldr';
@@ -58,7 +58,7 @@ const mapState = (s: State) => ({
   cldr: s.locale.cldr
 });
 
-const mapDispatch = (d: Dispatch<State>) => ({
+const mapDispatch = (d: Dispatch<AnyAction>) => ({
   actions: bindActionCreators({ changeLocale }, d)
 });
 

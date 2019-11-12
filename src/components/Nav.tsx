@@ -16,7 +16,7 @@ export class Nav extends React.Component<any> {
             @phensley/cldr
           </a>
           <a href='https://github.com/phensley/cldr-engine-react-demo'>Demo Github</a>
-          <a className='version'>{version} &mdash; cldr data {cldrVersion}</a>
+          <span className='version'>{version} &mdash; cldr data {cldrVersion}</span>
         </div>
       </nav>
     );

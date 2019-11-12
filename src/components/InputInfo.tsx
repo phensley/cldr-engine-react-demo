@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CLDR } from '@phensley/cldr';
@@ -10,7 +10,7 @@ import { languageName, regionName, scriptName } from './utils';
 
 interface Props {
   cldr: CLDR;
-  info: LocaleInfo;
+  info: LocaleInfo | undefined;
 }
 
 class InputInfoImpl extends React.Component<Props> {
@@ -47,6 +47,6 @@ const mapState = (s: State) => ({
   info: s.locale.info
 });
 
-const mapDispatch = (d: Dispatch<State>) => ({});
+const mapDispatch = (d: Dispatch<AnyAction>) => ({});
 
 export const InputInfo = connect(mapState, mapDispatch)(InputInfoImpl);

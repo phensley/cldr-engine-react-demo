@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dispatch } from 'redux';
+import { AnyAction, Dispatch } from 'redux';
 import { connect } from 'react-redux';
 
 import { CLDR, Quantity, UnitFormatOptions } from '@phensley/cldr';
@@ -81,6 +81,6 @@ const mapState = (s: State) => ({
   cldr: s.locale.cldr
 });
 
-const mapDispatch = (d: Dispatch<State>) => ({});
+const mapDispatch = (d: Dispatch<AnyAction>) => ({});
 
 export const UnitSequences = connect(mapState, mapDispatch)(UnitSequencesImpl);
