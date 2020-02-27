@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cldr-engine-react-demo/precache-manifest.d44fb10800c745caf06b17c77530056e.js"
+  "/cldr-engine-react-demo/precache-manifest.e76d7f940791ef79292c856fb3647ee6.js"
 );
 
 self.addEventListener('message', (event) => {
