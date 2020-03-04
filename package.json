@@ -10,7 +10,7 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "@phensley/cldr": "~1.0.1",
+    "@phensley/cldr": "~1.0.2",
     "icepick": "2.4.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -25,12 +25,12 @@
     "build": "yarn packs && react-scripts build",
     "clean": "rimraf ./public/packs",
     "deploy": "yarn build && yarn report && gh-pages -d build",
-		"link-all": "<libs.txt xargs -I % yarn link %",
+    "link-all": "ls --color=none node_modules/@phensley | xargs -I % yarn link @phensley/%",
     "packs": "rimraf ./public/packs && node scripts/copy-packs.js",
     "report": "source-map-explorer --html -m 'build/static/js/*.*' >build/report.html",
     "start": "yarn packs && react-scripts start",
     "test": "yarn packs && react-scripts test --env=jsdom",
-		"unlink-all": "<libs.txt xargs -I % yarn unlink %"
+    "unlink-all": "ls --color=none node_modules/@phensley | xargs -I % yarn unlink @phensley/%"
   },
   "devDependencies": {
     "@types/icepick": "^1.3.0",
