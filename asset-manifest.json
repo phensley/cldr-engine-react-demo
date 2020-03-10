@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/cldr-engine-react-demo/static/css/main.54bc8704.chunk.css",
-    "main.js": "/cldr-engine-react-demo/static/js/main.f90a6601.chunk.js",
-    "main.js.map": "/cldr-engine-react-demo/static/js/main.f90a6601.chunk.js.map",
+    "main.js": "/cldr-engine-react-demo/static/js/main.78d0af0a.chunk.js",
+    "main.js.map": "/cldr-engine-react-demo/static/js/main.78d0af0a.chunk.js.map",
     "runtime-main.js": "/cldr-engine-react-demo/static/js/runtime-main.5864edee.js",
     "runtime-main.js.map": "/cldr-engine-react-demo/static/js/runtime-main.5864edee.js.map",
-    "static/js/2.74719d41.chunk.js": "/cldr-engine-react-demo/static/js/2.74719d41.chunk.js",
-    "static/js/2.74719d41.chunk.js.map": "/cldr-engine-react-demo/static/js/2.74719d41.chunk.js.map",
+    "static/js/2.7dc0360e.chunk.js": "/cldr-engine-react-demo/static/js/2.7dc0360e.chunk.js",
+    "static/js/2.7dc0360e.chunk.js.map": "/cldr-engine-react-demo/static/js/2.7dc0360e.chunk.js.map",
     "index.html": "/cldr-engine-react-demo/index.html",
-    "precache-manifest.7c77aec6e364dec27833ef52d384a744.js": "/cldr-engine-react-demo/precache-manifest.7c77aec6e364dec27833ef52d384a744.js",
+    "precache-manifest.d4143c3de073bd73958575f3c0cfccf8.js": "/cldr-engine-react-demo/precache-manifest.d4143c3de073bd73958575f3c0cfccf8.js",
     "service-worker.js": "/cldr-engine-react-demo/service-worker.js",
     "static/css/main.54bc8704.chunk.css.map": "/cldr-engine-react-demo/static/css/main.54bc8704.chunk.css.map"
   },
   "entrypoints": [
     "static/js/runtime-main.5864edee.js",
-    "static/js/2.74719d41.chunk.js",
+    "static/js/2.7dc0360e.chunk.js",
     "static/css/main.54bc8704.chunk.css",
-    "static/js/main.f90a6601.chunk.js"
+    "static/js/main.78d0af0a.chunk.js"
   ]
 }
