@@ -2,8 +2,6 @@ import { CLDRFramework, LocaleMatcher } from '@phensley/cldr';
 
 export const allLocales = CLDRFramework.availableLocales();
 
-const supported = allLocales.sort(
-  l => l.tag.expanded() === 'en-Latn-US' ? -1 : 1
-).map(l => l.id);
+const supported = allLocales.sort(l => l.id === 'en' ? -1 : 1);
 
-export const localeMatcher = new LocaleMatcher(supported);
+export const localeMatcher = new LocaleMatcher(supported, { resolve: false });

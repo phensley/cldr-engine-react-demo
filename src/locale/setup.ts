@@ -43,7 +43,11 @@ const options: CLDROptions = {
 
   // Patterns are parsed and cached on demand. This will keep up to
   // 50 patterns in cache with least-recently-used eviction.
-  patternCacheSize: 50
+  patternCacheSize: 50,
+
+  // Our build process ensures we only load resource packs whose hash
+  // matches. Skip calculating the schema checksum.
+  skipChecksum: true
 };
 
 // Global instance of cldr configured for our app
