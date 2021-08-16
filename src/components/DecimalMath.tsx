@@ -76,7 +76,7 @@ export class DecimalMathImpl extends React.Component<any> {
   operations(): JSX.Element[] {
     const { userA, userB } = this.props;
     const max = NUMBERS.length;
-    const res = NUMBERS.map((pair, i) => {
+    const res = !NUMBERS ? [] : NUMBERS.map((pair, i) => {
       const [a, b] = pair;
       return (
         <tr key={i}>

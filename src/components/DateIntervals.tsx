@@ -41,7 +41,7 @@ class DateIntervalsImpl extends React.Component<any> {
     return (
       <tr>
         <td />
-        {DELTAS.map((d, j) => <td key={j}>{d[0]}</td>)}
+        {DELTAS && DELTAS.map((d, j) => <td key={j}>{d[0]}</td>)}
       </tr>
     );
   }
