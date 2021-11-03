@@ -5,15 +5,15 @@
     "main.js.map": "/cldr-engine-react-demo/static/js/main.d62df3fe.chunk.js.map",
     "runtime-main.js": "/cldr-engine-react-demo/static/js/runtime-main.8409d1d6.js",
     "runtime-main.js.map": "/cldr-engine-react-demo/static/js/runtime-main.8409d1d6.js.map",
-    "static/js/2.b0f5a374.chunk.js": "/cldr-engine-react-demo/static/js/2.b0f5a374.chunk.js",
-    "static/js/2.b0f5a374.chunk.js.map": "/cldr-engine-react-demo/static/js/2.b0f5a374.chunk.js.map",
+    "static/js/2.71c0122b.chunk.js": "/cldr-engine-react-demo/static/js/2.71c0122b.chunk.js",
+    "static/js/2.71c0122b.chunk.js.map": "/cldr-engine-react-demo/static/js/2.71c0122b.chunk.js.map",
     "index.html": "/cldr-engine-react-demo/index.html",
     "static/css/main.a02e0bed.chunk.css.map": "/cldr-engine-react-demo/static/css/main.a02e0bed.chunk.css.map",
-    "static/js/2.b0f5a374.chunk.js.LICENSE.txt": "/cldr-engine-react-demo/static/js/2.b0f5a374.chunk.js.LICENSE.txt"
+    "static/js/2.71c0122b.chunk.js.LICENSE.txt": "/cldr-engine-react-demo/static/js/2.71c0122b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.8409d1d6.js",
-    "static/js/2.b0f5a374.chunk.js",
+    "static/js/2.71c0122b.chunk.js",
     "static/css/main.a02e0bed.chunk.css",
     "static/js/main.d62df3fe.chunk.js"
   ]
