@@ -22,7 +22,7 @@ class InputInfoImpl extends React.Component<Props> {
       if (input && locale) {
         const lang = languageName(English, input.language());
         const script = scriptName(English, input.script());
-        const region = regionName(English, input.region());
+        const region = regionName(English, `${input.language()}-${input.region()}`);
         return (
           <table>
             <tbody>

@@ -23,6 +23,8 @@ class MatcherImpl extends React.Component<Props> {
     let { value } = e.currentTarget;
     if (value === '') {
       value = 'und';
+    } else {
+      value = value.trim();
     }
     const input = parseLanguageTag(value);
     const match = localeMatcher.match(value);
