@@ -1,5 +1,4 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { state } from './reducers';
 import { setupStore } from './store';
@@ -11,9 +10,9 @@ import './index.css';
 const store = setupStore(state);
 store.runSaga(rootSaga);
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root')!);
+root.render(
   <Provider store={store}>
     <App />
-  </Provider>,
-  document.getElementById('root') as HTMLElement
+  </Provider>
 );
