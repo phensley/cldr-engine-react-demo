@@ -34,28 +34,28 @@
     "icepick": "2.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "8.0.5",
+    "react-redux": "8.0.7",
     "react-redux-router": "^0.0.14",
     "redux": "4.2.1",
     "redux-actions": "^3.0.0",
-    "redux-saga": "1.2.2",
-    "wretch": "2.5.1"
+    "redux-saga": "1.2.3",
+    "wretch": "2.5.2"
   },
   "devDependencies": {
     "@types/icepick": "^2.3.0",
-    "@types/node": "18.x",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
+    "@types/node": "20.x",
+    "@types/react": "18.2.8",
+    "@types/react-dom": "18.2.4",
     "@types/react-redux": "7.1.25",
     "@types/redux-actions": "^2.6.2",
-    "dependency-cruiser": "12.10.0",
+    "dependency-cruiser": "13.0.3",
     "gh-pages": "^5.0.0",
-    "postcss": "^8.4.21",
+    "postcss": "^8.4.24",
     "postcss-normalize": "^10.0.1",
     "react-scripts": "5.0.1",
-    "rimraf": "4.3.1",
+    "rimraf": "5.0.1",
     "source-map-explorer": "2.5.3",
     "ts-node": "10.9.1",
-    "typescript": "~4.9.5"
+    "typescript": "~5.1.3"
   }
 }
