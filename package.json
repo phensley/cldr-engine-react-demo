@@ -30,11 +30,11 @@
     "unlink-all": "ls --color=none node_modules/@phensley | xargs -I % yarn unlink @phensley/%"
   },
   "dependencies": {
-    "@phensley/cldr": "~1.7.0",
+    "@phensley/cldr": "~1.7.1",
     "icepick": "2.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-redux": "8.0.7",
+    "react-redux": "8.1.1",
     "react-redux-router": "^0.0.14",
     "redux": "4.2.1",
     "redux-actions": "^3.0.0",
@@ -44,11 +44,11 @@
   "devDependencies": {
     "@types/icepick": "^2.3.0",
     "@types/node": "20.x",
-    "@types/react": "18.2.8",
-    "@types/react-dom": "18.2.4",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "18.2.6",
     "@types/react-redux": "7.1.25",
     "@types/redux-actions": "^2.6.2",
-    "dependency-cruiser": "13.0.3",
+    "dependency-cruiser": "13.0.4",
     "gh-pages": "^5.0.0",
     "postcss": "^8.4.24",
     "postcss-normalize": "^10.0.1",
