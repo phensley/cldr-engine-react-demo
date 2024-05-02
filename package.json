@@ -30,7 +30,7 @@
     "unlink-all": "ls --color=none node_modules/@phensley | xargs -I % yarn unlink @phensley/%"
   },
   "dependencies": {
-    "@phensley/cldr": "~1.8.0",
+    "@phensley/cldr": "~1.8.1",
     "icepick": "2.4.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
