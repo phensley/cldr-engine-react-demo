@@ -64,7 +64,6 @@ class DateIntervalsImpl extends React.Component<any> {
       );
     });
 
-    skeleton = DEFAULT_SKELETON;
     const opts = { skeleton, context: 'standalone' };
     const result = DELTAS.map(d => formatInterval(cldr, start, d[1], opts));
     res.push(
