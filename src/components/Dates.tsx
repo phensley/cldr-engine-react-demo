@@ -7,7 +7,7 @@ import { calendarChangeDateSkeleton } from '../actions';
 import { State } from '../reducers';
 import { renderOptions } from './utils';
 
-const DEFAULT_SKELETON = 'yMMMMdhmsSSSVVVV';
+const DEFAULT_SKELETON = 'yMMMMdjmsSSSVVVV';
 
 const ZONES: string[] = [
   'America/New_York', 'Europe/London', 'Asia/Tokyo', 'Pacific/Galapagos'
@@ -21,8 +21,8 @@ const OPTIONS: DateFormatOptions[] = [
   { time: 'full' },
   { time: 'long' },
   { time: 'short' },
-  { skeleton: 'yMMMdHmsSSS' },
-  { skeleton: 'yEMMMMBh' }
+  { skeleton: 'yMMMdjmsSSS' },
+  { skeleton: 'yEMMMMBj' }
 ];
 
 const formatDate = (cldr: CLDR, date: Date, zoneId: string, opts: DateFormatOptions): string =>

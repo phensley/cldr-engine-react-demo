@@ -8,13 +8,12 @@ import { State } from '../reducers';
 import { renderOptions } from './utils';
 
 const NEW_YORK = 'America/New_York';
-const DEFAULT_SKELETON = 'yMMMMd';
+const DEFAULT_SKELETON = 'yMMMMdjm';
 
 const OPTIONS: any[] = [
-  { skeleton: 'Bh' },
-  { skeleton: 'hmsa' },
+  { skeleton: 'Bj' },
+  { skeleton: 'jmsa' },
   { skeleton: 'yMMMMd' },
-  { skeleton: 'yMMMdhms' }
 ];
 
 const MINUTE = 60000;
@@ -52,7 +51,7 @@ class DateIntervalsImpl extends React.Component<any> {
   }
 
   intervals(): JSX.Element[] {
-    const { cldr, skeleton } = this.props;
+    let { cldr, skeleton } = this.props;
     const start: ZonedDateTime = { date: new Date(), zoneId: NEW_YORK };
     const len = OPTIONS.length;
     const res = OPTIONS.map((o, i) => {
@@ -65,6 +64,7 @@ class DateIntervalsImpl extends React.Component<any> {
       );
     });
 
+    skeleton = DEFAULT_SKELETON;
     const opts = { skeleton, context: 'standalone' };
     const result = DELTAS.map(d => formatInterval(cldr, start, d[1], opts));
     res.push(
