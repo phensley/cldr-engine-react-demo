@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/cldr-engine-react-demo/static/css/main.ddf47101.css",
-    "main.js": "/cldr-engine-react-demo/static/js/main.a5ebb5a3.js",
+    "main.js": "/cldr-engine-react-demo/static/js/main.b1a4142e.js",
     "index.html": "/cldr-engine-react-demo/index.html",
     "main.ddf47101.css.map": "/cldr-engine-react-demo/static/css/main.ddf47101.css.map",
-    "main.a5ebb5a3.js.map": "/cldr-engine-react-demo/static/js/main.a5ebb5a3.js.map"
+    "main.b1a4142e.js.map": "/cldr-engine-react-demo/static/js/main.b1a4142e.js.map"
   },
   "entrypoints": [
     "static/css/main.ddf47101.css",
-    "static/js/main.a5ebb5a3.js"
+    "static/js/main.b1a4142e.js"
   ]
 }
